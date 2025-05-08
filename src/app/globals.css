@@ -3,6 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+}
+
 @theme inline {
   /* 间距系统 */
   --gap-xs: 0.5rem;     
