@@ -9,9 +9,9 @@ export default async function Home() {
   return (
     <div className="">
       {/* 卡片 */}
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 relative">
         {/* 上方区域 */}
-        <div  className="flex justify-between">
+        <div  className="flex justify-between sticky top-0 border border-border bg-gray-100 py-2">
           <h1 className="font-black text-2xl">
             Snippets
           </h1>
