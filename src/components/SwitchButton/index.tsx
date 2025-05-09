@@ -5,9 +5,9 @@ import React from 'react'
 import { useStore } from '@/store/editorStore'
 
 export default function SwitchButton() {
-    // 管理是否可编辑
+    const isReadOnly = useStore(state => state.isReadOnly)
     const switchIsReadOnly = useStore(state => state.switchIsReadOnly)
   return (
-    <Button onClick={() => switchIsReadOnly()}>Edit</Button>
+    <Button variant='ghost' onClick={() => switchIsReadOnly()} className={`font-black ${isReadOnly ? '' : 'bg-green-600 hover:bg-green-600 text-white hover:text-white'}`}>{isReadOnly ? 'Edit' : 'Save'}</Button>
   )
 }

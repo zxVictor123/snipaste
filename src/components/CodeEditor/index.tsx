@@ -9,7 +9,7 @@ interface propsType {
 export default function CodeEditor({code}: propsType){
   const isReadOnly = useStore(state => state.isReadOnly)
   return (
-    <div className='bg-secondary text-secondary-foreground whitespace-pre-wrap overflow-auto h-9/10'>
+    <div className={`${isReadOnly ? '' : 'border-orange-300'} border-6 bg-secondary text-secondary-foreground whitespace-pre-wrap overflow-auto h-9/10`}>
       <Editor
       theme='vs-dark'
       defaultValue={code}
