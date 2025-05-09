@@ -4,8 +4,12 @@ import { Button } from '@/components/ui/button'
 import { db } from '@/db'
 import { notFound } from 'next/navigation'
 import { deleteSnippet } from './serverAction'
+import CodeEditor from '@/components/CodeEditor'
+import SwitchButton from '@/components/SwitchButton'
 
 export default async function page({params}: {params: Promise<{ id: string }>}) {
+
+    // 获取对应snippet
     const {id} = await params
     const snippet = await db.snippet.findFirst({
         where: {id: parseInt(id)}
@@ -14,7 +18,8 @@ export default async function page({params}: {params: Promise<{ id: string }>}) 
     if(!snippet) {
         return notFound()
     }
-        
+    
+
     return (
         <div className='h-screen'>
             <div className='flex flex-col gap-4 h-full pb-2'>
@@ -22,7 +27,7 @@ export default async function page({params}: {params: Promise<{ id: string }>}) 
                 <div className='flex justify-between bg-background items-center'>
                     <h1 className='text-foreground font-black text-2xl'>{snippet.title}</h1>
                     <div className='flex gap-3'>
-                        <Link href=""><Button>Edit</Button></Link>
+                        <SwitchButton/>
                         <form action={async () => {
                             'use server'
                             await deleteSnippet(id)
@@ -31,10 +36,7 @@ export default async function page({params}: {params: Promise<{ id: string }>}) 
                         </form>
                     </div>
                 </div>
-                {/* 代码区域 */}
-                <div className='bg-secondary text-secondary-foreground whitespace-pre-wrap overflow-auto h-9/10'>
-                    {snippet.code}
-                </div>
+                <CodeEditor code= {snippet.code}/>
             </div>
         </div>
     )
