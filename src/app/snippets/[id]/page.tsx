@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { db } from '@/db'
-
+import { notFound } from 'next/navigation'
 
 export default async function page({params}: {params: Promise<{ id: string }>}) {
     const {id} = await params
@@ -11,7 +11,7 @@ export default async function page({params}: {params: Promise<{ id: string }>}) 
         }
     )
     if(!snippet) {
-        return <div>Not Found...</div>
+        return notFound()
     }
         
   return (
