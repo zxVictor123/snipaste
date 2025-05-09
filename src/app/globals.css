@@ -10,13 +10,7 @@
 }
 
 @theme inline {
-  /* 间距系统 */
-  --gap-xs: 0.5rem;     
-  --gap-sm: 1rem;      
-  --gap-md: 2rem;      
-  --gap-lg: 4rem;    
-  --gap-xl: 6rem;      
-  --gap-2xl: 8rem;     
+
 
   /* 颜色系统 */
   --color-background: var(--background);
