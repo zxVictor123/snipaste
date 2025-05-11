@@ -3,6 +3,7 @@
 import { db } from '@/db'
 import { redirect } from 'next/navigation'
 import { ActionStateType } from './type'
+import { revalidatePath } from 'next/cache'
 
 
 export async function createSnippet(prevState: ActionStateType, formData: FormData) {
@@ -26,5 +27,6 @@ export async function createSnippet(prevState: ActionStateType, formData: FormDa
       }
   })
     console.log(snippet)
+    revalidatePath('/')
     redirect('/')
   }

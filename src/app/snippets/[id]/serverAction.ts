@@ -1,6 +1,7 @@
 'use server'
 
 import { db } from "@/db";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function deleteSnippet(id: string) {
@@ -9,6 +10,7 @@ export async function deleteSnippet(id: string) {
             id: parseInt(id)
         }
     })
+    revalidatePath('/')
     redirect('/')
 }
 
