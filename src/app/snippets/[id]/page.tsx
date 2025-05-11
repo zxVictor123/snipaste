@@ -4,12 +4,13 @@ import { notFound } from 'next/navigation'
 import CodeEditor from '@/components/CodeEditor'
 import SwitchButton from '@/components/SwitchButton'
 import DeleteButton from '@/components/DeleteButton'
+import { PageProps } from '../../../../.next/types/app/layout'
 
-export default async function Page({params}: {params: { id: string }}) {
+export default async function Page({params}: {params: Promise<{id: string}>}) {
     const {id} = await params
     // 获取对应snippet
     const snippet = await db.snippet.findFirst({
-        where: {id: parseInt(params.id)}
+        where: {id: parseInt(id)}
     })
     
     if(!snippet) {

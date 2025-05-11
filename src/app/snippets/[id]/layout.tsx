@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { LayoutProps } from "../../../../.next/types/app/layout";
 
 
 
-export async function generateMetadata({ params }: { params: { id: string }}): Promise<Metadata> {
-    const {id} = params
+export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
+    const {id} = await params
     return {
         title: `snippet/${id}`
     }
