@@ -1,9 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import { db } from '@/db'
 import { notFound } from 'next/navigation'
-import { deleteSnippet } from './serverAction'
 import CodeEditor from '@/components/CodeEditor'
 import SwitchButton from '@/components/SwitchButton'
 import DeleteButton from '@/components/DeleteButton'
@@ -30,10 +27,7 @@ export default async function Page({params}: {params: { id: string }}) {
                         <DeleteButton id= {id}/>
                     </div>
                 </div>
-                <CodeEditor 
-                    code={snippet.code}
-                    id={id}
-                />
+                <CodeEditor code={snippet.code} id={id}/>
             </div>
         </div>
     )
